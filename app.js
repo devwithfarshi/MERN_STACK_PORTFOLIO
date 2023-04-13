@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use("/api/v1", userRouter);
 
-app.use(express.static(path.resolve("./client/dist")));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve("./client/dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 });
 
 app.listen(process.env.PORT, () => {
