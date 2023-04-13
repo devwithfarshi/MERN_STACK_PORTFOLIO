@@ -35,7 +35,7 @@ try {
     res.sendFile(
       path.join(__dirname, "./client/dist/index.html"),
       function (err) {
-        res.status(500).send(err);
+        res.status(500).send({ err });
       },
     );
   });
