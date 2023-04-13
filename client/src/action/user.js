@@ -1,4 +1,4 @@
-import axios from "../config/axiosConfig";
+import axios from "axios";
 export const getUser = () => async (dispatch) => {
   try {
     dispatch({ type: "GET_USER_REQUEST" });

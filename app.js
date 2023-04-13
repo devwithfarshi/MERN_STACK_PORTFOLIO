@@ -1,5 +1,6 @@
 import express from "express";
 import colors from "colors";
+import { URL } from "url";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cloudinary from "cloudinary";
@@ -9,6 +10,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDatabase } from "./config/database.js";
 import { userRouter } from "./routes/User.js";
+import { decode } from "punycode";
 
 dotenv.config();
 connectDatabase();
@@ -25,10 +27,22 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use("/api/v1", userRouter);
 
-app.use(express.static(path.join(__dirname, "client", "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-});
+//hosting
+const __dirname = decodeURI(new URL(".", import.meta.url).pathname);
+try {
+  app.use(express.static(path.join(__dirname, "./client/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.join(__dirname, "./client/dist/index.html"),
+      function (err) {
+        res.status(500).send(err);
+      },
+    );
+  });
+} catch (error) {
+  console.log(`Error o`);
+  console.log(error);
+}
 
 app.listen(process.env.PORT, () => {
   console.log(
