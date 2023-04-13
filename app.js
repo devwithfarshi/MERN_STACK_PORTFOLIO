@@ -26,10 +26,10 @@ app.use("/api/v1", userRouter);
 //hosting
 
 try {
-  app.use(express.static(path.resolve(__dirname, "client/dist")));
-  app.get("*", (req, res) => {
+  app.use(express.static(path.join(__dirname, "client", "dist")));
+  app.get("*", (_, res) => {
     res.sendFile(
-      path.resolve(__dirname, "client/dist/index.html"),
+      path.join(__dirname, "client", "dist", "index.html"),
       function (err) {
         res.status(500).send({ err });
       },
