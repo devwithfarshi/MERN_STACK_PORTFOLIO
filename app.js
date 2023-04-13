@@ -28,15 +28,7 @@ app.use("/api/v1", userRouter);
 app.use(express.static(path.join(__dirname, "./client/dist")));
 
 app.get("*", (_, res) => {
-  res.sendFile(
-    path.join(__dirname, "./client/dist/index.html"),
-    function (err) {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Internal Server Error");
-      }
-    },
-  );
+  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
 app.listen(process.env.PORT, () => {
