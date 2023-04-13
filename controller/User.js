@@ -1,9 +1,9 @@
-import { User } from "../model/User.js";
-import jwt from "jsonwebtoken";
-import { sendMail } from "../middlewares/sendMail.js";
-import cloudinary from "cloudinary";
+const { User } = require("../model/User.js");
+const jwt = require("jsonwebtoken");
+const { sendMail } = require("../middlewares/sendMail.js");
+const cloudinary = require("cloudinary");
 
-export const login = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -37,7 +37,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
+exports.logout = async (req, res) => {
   try {
     res
       .status(200)
@@ -57,7 +57,7 @@ export const logout = async (req, res) => {
   }
 };
 
-export const getUser = async (req, res) => {
+exports.getUser = async (req, res) => {
   try {
     const user = await User.findOne().select("-password -email");
 
@@ -73,7 +73,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-export const myProfile = async (req, res) => {
+exports.myProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
@@ -89,7 +89,7 @@ export const myProfile = async (req, res) => {
   }
 };
 
-export const contact = async (req, res) => {
+exports.contact = async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
@@ -109,7 +109,7 @@ export const contact = async (req, res) => {
   }
 };
 
-export const updateUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
@@ -247,7 +247,7 @@ export const updateUser = async (req, res) => {
   }
 };
 
-export const addTimeline = async (req, res) => {
+exports.addTimeline = async (req, res) => {
   try {
     const { title, description, date } = req.body;
 
@@ -273,7 +273,7 @@ export const addTimeline = async (req, res) => {
   }
 };
 
-export const addProject = async (req, res) => {
+exports.addProject = async (req, res) => {
   try {
     const { url, title, image, description, techStack } = req.body;
 
@@ -307,7 +307,7 @@ export const addProject = async (req, res) => {
   }
 };
 
-export const deleteTimeline = async (req, res) => {
+exports.deleteTimeline = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -329,7 +329,7 @@ export const deleteTimeline = async (req, res) => {
   }
 };
 
-export const deleteProject = async (req, res) => {
+exports.deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
 

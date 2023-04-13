@@ -1,5 +1,5 @@
-import { createTransport } from "nodemailer";
-export const sendMail = async (text) => {
+const { createTransport } = require("nodemailer");
+exports.sendMail = async (text) => {
   const transporter = createTransport({
     host: process.env.SMPT_HOST,
     port: process.env.SMPT_PORT,

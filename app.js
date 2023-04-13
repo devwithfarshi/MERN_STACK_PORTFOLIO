@@ -1,17 +1,13 @@
-import express from "express";
-import colors from "colors";
-import { URL } from "url";
-import cookieParser from "cookie-parser";
-import path from "path";
-import cloudinary from "cloudinary";
-
+const express = require("express");
+const colors = require("colors");
+const cookieParser = require("cookie-parser");
+const path = require("path");
+const cloudinary = require("cloudinary");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const { connectDatabase } = require("./config/database.js");
+const userRouter = require("./routes/User.js");
 const app = express();
-import dotenv from "dotenv";
-import cors from "cors";
-import { connectDatabase } from "./config/database.js";
-import { userRouter } from "./routes/User.js";
-import { decode } from "punycode";
-
 dotenv.config();
 connectDatabase();
 app.use(cors());
@@ -28,7 +24,7 @@ app.use(cookieParser());
 app.use("/api/v1", userRouter);
 
 //hosting
-const __dirname = decodeURI(new URL(".", import.meta.url).pathname);
+
 try {
   app.use(express.static(path.join(__dirname, "./client/dist")));
   app.get("*", (req, res) => {

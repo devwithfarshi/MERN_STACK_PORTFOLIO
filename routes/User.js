@@ -1,6 +1,6 @@
-import express from "express";
-import { isAuthenticated } from "../middlewares/auth.js";
-import {
+const express = require("express");
+const { isAuthenticated } = require("../middlewares/auth.js");
+const {
   login,
   logout,
   getUser,
@@ -11,23 +11,24 @@ import {
   addProject,
   deleteTimeline,
   deleteProject,
-} from "../controller/User.js";
-export const userRouter = express.Router();
+} = require("../controller/User.js");
+const router = express.Router();
 
-userRouter.route("/login").post(login);
+router.route("/login").post(login);
 
-userRouter.route("/logout").get(logout);
+router.route("/logout").get(logout);
 
-userRouter.route("/user").get(getUser);
+router.route("/user").get(getUser);
 
-userRouter.route("/me").get(isAuthenticated, myProfile);
+router.route("/me").get(isAuthenticated, myProfile);
 
-userRouter.route("/admin/update").put(isAuthenticated, updateUser);
+router.route("/admin/update").put(isAuthenticated, updateUser);
 
-userRouter.route("/admin/timeline/add").post(isAuthenticated, addTimeline);
-userRouter.route("/admin/project/add").post(isAuthenticated, addProject);
+router.route("/admin/timeline/add").post(isAuthenticated, addTimeline);
+router.route("/admin/project/add").post(isAuthenticated, addProject);
 
-userRouter.route("/admin/timeline/:id").delete(isAuthenticated, deleteTimeline);
-userRouter.route("/admin/project/:id").delete(isAuthenticated, deleteProject);
+router.route("/admin/timeline/:id").delete(isAuthenticated, deleteTimeline);
+router.route("/admin/project/:id").delete(isAuthenticated, deleteProject);
 
-userRouter.route("/contact").post(contact);
+router.route("/contact").post(contact);
+module.exports = router;
