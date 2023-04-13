@@ -27,11 +27,15 @@ app.use("/api/v1", userRouter);
 
 try {
   app.use(express.static(path.join(__dirname, "client", "dist")));
+
   app.get("*", (_, res) => {
     res.sendFile(
       path.join(__dirname, "client", "dist", "index.html"),
       function (err) {
-        res.status(500).send({ err });
+        if (err) {
+          console.error(err);
+          res.status(500).send("Internal Server Error");
+        }
       },
     );
   });
