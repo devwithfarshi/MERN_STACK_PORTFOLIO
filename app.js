@@ -25,24 +25,19 @@ app.use("/api/v1", userRouter);
 
 //hosting
 
-try {
-  app.use(express.static(path.join(__dirname, "client", "dist")));
+app.use(express.static(path.join(__dirname, "./client/dist")));
 
-  app.get("*", (_, res) => {
-    res.sendFile(
-      path.join(__dirname, "client", "dist", "index.html"),
-      function (err) {
-        if (err) {
-          console.error(err);
-          res.status(500).send("Internal Server Error");
-        }
-      },
-    );
-  });
-} catch (error) {
-  console.log(`Error o`);
-  console.log(error);
-}
+app.get("*", (_, res) => {
+  res.sendFile(
+    path.join(__dirname, "./client/dist/index.html"),
+    function (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+      }
+    },
+  );
+});
 
 app.listen(process.env.PORT, () => {
   console.log(
