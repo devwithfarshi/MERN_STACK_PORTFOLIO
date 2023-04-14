@@ -28,7 +28,7 @@ app.use("/api/v1", userRouter);
 app.use(express.static(path.join(__dirname + "/client/dist")));
 
 app.get("*", (_, res) => {
-  res.sendFile("client/dis/index.html", { root: __dirname });
+  res.sendFile("client/dist/index.html", { root: __dirname });
 });
 
 app.listen(process.env.PORT, () => {
