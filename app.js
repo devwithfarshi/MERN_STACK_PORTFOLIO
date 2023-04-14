@@ -26,10 +26,10 @@ app.use("/api/v1", userRouter);
 
 //hosting
 
-app.use(express.static(path.join(__dirname, "./client/dist")));
+app.use(express.static(path.join("./client/dist")));
 
 app.get("*", (_, res) => {
-  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
+  res.sendFile(path.join("./client/dist/index.html"));
 });
 
 app.listen(process.env.PORT, () => {
