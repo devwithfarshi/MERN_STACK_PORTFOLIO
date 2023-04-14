@@ -19,16 +19,12 @@ cloudinary.v2.config({
 });
 
 app.use(express.json());
-// app.use(express.json({ limit: "50mb" }));
-// app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use("/api/v1", userRouter);
-
-//hosting
-app.use(express.static(path.join(__dirname + "/client/dist")));
-
-app.get("*", (_, res) => {
-  res.sendFile("client/dist/index.html", { root: __dirname });
+app.get("/", (req, res) => {
+  res.json({ message: "Api Running..." });
 });
 
 app.listen(process.env.PORT, () => {
