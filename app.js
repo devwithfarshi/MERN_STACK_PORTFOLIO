@@ -32,7 +32,7 @@ app.get("*", (_, res) => {
   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
-app.listen(process.env.ORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(
     `Server is running on http://localhost:${process.env.PORT}`.cyan.bold,
   );
