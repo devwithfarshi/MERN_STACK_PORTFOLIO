@@ -8,7 +8,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-dist
+
 dist-ssr
 *.local
 
@@ -29,8 +29,7 @@ dist-ssr
 # testing
 /client/coverage
 
-# production
-/client/dist
+
 
 # misc
 /client/.DS_Store
