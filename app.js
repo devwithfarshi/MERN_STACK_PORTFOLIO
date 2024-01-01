@@ -23,12 +23,13 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use("/api/v1", userRouter);
+
 app.get("/", (req, res) => {
   res.json({ message: "Api Running..." });
 });
 
 app.listen(process.env.PORT, () => {
   console.log(
-    `Server is running on http://localhost:${process.env.PORT}`.cyan.bold,
+    `Server is running on http://localhost:${process.env.PORT}`.cyan.bold
   );
 });

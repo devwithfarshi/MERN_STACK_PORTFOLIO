@@ -28,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      },
+      }
     );
     localStorage.setItem("token", data.token);
 
@@ -102,7 +102,7 @@ export const updateUser =
             "Content-Type": "application/json",
             Authorization: token,
           },
-        },
+        }
       );
 
       dispatch({
@@ -138,7 +138,7 @@ export const addTimeline = (title, description, date) => async (dispatch) => {
           "Content-Type": "application/json",
           Authorization: token,
         },
-      },
+      }
     );
 
     dispatch({
@@ -195,7 +195,7 @@ export const addProject =
             "Content-Type": "application/json",
             Authorization: token,
           },
-        },
+        }
       );
 
       dispatch({
@@ -249,7 +249,7 @@ export const contactUs = (name, email, message) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      },
+      }
     );
 
     dispatch({
