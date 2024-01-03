@@ -274,7 +274,7 @@ exports.addTimeline = async (req, res) => {
 };
 
 
-//add project function
+
 exports.addProject = async (req, res) => {
   try {
     const { url, title, image, description, techStack } = req.body;
