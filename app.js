@@ -1,6 +1,7 @@
 const express = require("express");
 const colors = require("colors");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const path = require("path");
 const cloudinary = require("cloudinary");
 const dotenv = require("dotenv");
@@ -11,7 +12,13 @@ const app = express();
 dotenv.config();
 connectDatabase();
 app.use(cors());
+app.use(
+  express.json({
+    limit: "50mb",
+  })
+);
 
+app.use(express.urlencoded({ limit: "50mb" }));
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -19,10 +26,17 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.use(express.json());
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: false,
+//     parameterLimit: 100000,
+//     limit: "500mb",
+//   })
+// );
+// // parse application/json
+// app.use(bodyParser.json());
+
 app.use("/api/v1", userRouter);
 
 app.get("/", (req, res) => {
