@@ -11,6 +11,7 @@ const app = express();
 dotenv.config();
 connectDatabase();
 app.use(cors());
+app.use(express.bodyParser({limit: '50mb'}))
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
