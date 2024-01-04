@@ -35,7 +35,7 @@ const Footer = ({ about }) => {
         <Typography variant='h6'>Social Media</Typography>
         <div className='socialLinks'>
           <a
-            href='https://github.com/sfsalman/'
+            href='https://github.com/devwithfarshi/'
             target='black'
           >
             <BsGithub />
