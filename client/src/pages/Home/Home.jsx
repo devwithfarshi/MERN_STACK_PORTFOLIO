@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import * as THREE from "three";
-import moonImage from "../../image/moon.jpg";
-import venusImage from "../../image/venus.jpg";
+import moonImage from "../../image/moon-min.jpg";
+import venusImage from "../../image/venus-min.jpg";
 import spaceImage from "../../image/space.jpg";
 import { Link } from "react-router-dom";
 import { MouseOutlined } from "@mui/icons-material";
@@ -32,7 +32,7 @@ const Home = ({ user }) => {
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000,
+      1000
     );
     camera.position.set(4, 4, 8);
 
@@ -116,14 +116,11 @@ const Home = ({ user }) => {
   }, []);
 
   return (
-    <div className='home'>
-      <canvas className='homeCanvas'></canvas>
+    <div className="home">
+      <canvas className="homeCanvas"></canvas>
 
-      <div className='homeCanvasContainer'>
-        <Typography
-          style={{ textTransform: "uppercase" }}
-          variant='h1'
-        >
+      <div className="homeCanvasContainer">
+        <Typography style={{ textTransform: "uppercase" }} variant="h1">
           {nameArray ? (
             nameArray.map((v) => <p>{v}</p>)
           ) : (
@@ -136,125 +133,83 @@ const Home = ({ user }) => {
           )}
         </Typography>
 
-        <div className='homeCanvasBox'>
-          <Typography variant='h2'>DESIGNER</Typography>
-          <Typography variant='h2'>DEVELOPER</Typography>
-          <Typography variant='h2'>TEACHER</Typography>
+        <div className="homeCanvasBox">
+          <Typography variant="h2">DESIGNER</Typography>
+          <Typography variant="h2">DEVELOPER</Typography>
+          <Typography variant="h2">TEACHER</Typography>
         </div>
 
-        <Link to='/projects'>VIEW WORK</Link>
+        <Link to="/projects">VIEW WORK</Link>
       </div>
 
-      <div className='homeScrollBtn'>
+      <div className="homeScrollBtn">
         <MouseOutlined />
       </div>
-      <div className='homeContainer'>
-        <Typography variant='h3'>TIMELINE</Typography>
+      <div className="homeContainer">
+        <Typography variant="h3">TIMELINE</Typography>
         <TimeLine timelines={user.timeline} />
       </div>
-      <div className='homeSkills'>
-        <Typography variant='h3'>SKILLS</Typography>
-        <div className='homeCubeSkills'>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace1'>
-            <img
-              src={user.skills.image1.url}
-              alt='face 1'
-            />
+      <div className="homeSkills">
+        <Typography variant="h3">SKILLS</Typography>
+        <div className="homeCubeSkills">
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace1">
+            <img src={user.skills.image1.url} alt="face 1" />
           </div>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace2'>
-            <img
-              src={user.skills.image2.url}
-              alt='face 1'
-            />
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace2">
+            <img src={user.skills.image2.url} alt="face 1" />
           </div>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace3'>
-            <img
-              src={user.skills.image3.url}
-              alt='face 1'
-            />
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace3">
+            <img src={user.skills.image3.url} alt="face 1" />
           </div>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace4'>
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace4">
             <img src={user.skills.image4.url} />
           </div>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace5'>
-            <img
-              src={user.skills.image5.url}
-              alt='face 1'
-            />
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace5">
+            <img src={user.skills.image5.url} alt="face 1" />
           </div>
-          <div className='homeCubeSkillsFaces homeCubeSkillsFace6'>
-            <img
-              src={user.skills.image6.url}
-              alt='face 1'
-            />
+          <div className="homeCubeSkillsFaces homeCubeSkillsFace6">
+            <img src={user.skills.image6.url} alt="face 1" />
           </div>
         </div>
 
-        <div className='cubeShadow'></div>
-        <div
-          className='homeskillsBox'
-          id='homeskillsBox'
-        >
-          <Tooltip
-            title='Python'
-            placement='left-start'
-          >
+        <div className="cubeShadow"></div>
+        <div className="homeskillsBox" id="homeskillsBox">
+          <Tooltip title="Python" placement="left-start">
             <IconButton>
               <SiPython />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='HTML 5'
-            placement='left-start'
-          >
+          <Tooltip title="HTML 5" placement="left-start">
             <IconButton>
               <SiHtml5 />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='CSS 3'
-            placement='left-start'
-          >
+          <Tooltip title="CSS 3" placement="left-start">
             <IconButton>
               <SiCss3 />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='JavaScript'
-            placement='left-start'
-          >
+          <Tooltip title="JavaScript" placement="left-start">
             <IconButton>
               <SiJavascript />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='MongoDB'
-            placement='left-start'
-          >
+          <Tooltip title="MongoDB" placement="left-start">
             <IconButton>
               <SiMongodb />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='Next.JS'
-            placement='left-start'
-          >
+          <Tooltip title="Next.JS" placement="left-start">
             <IconButton>
               <SiNextdotjs />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='React.JS'
-            placement='left-start'
-          >
+          <Tooltip title="React.JS" placement="left-start">
             <IconButton>
               <SiReact />
             </IconButton>
           </Tooltip>
-          <Tooltip
-            title='Express'
-            placement='left-start'
-          >
+          <Tooltip title="Express" placement="left-start">
             <IconButton>
               <SiExpress />
             </IconButton>

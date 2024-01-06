@@ -12,6 +12,8 @@ const app = express();
 dotenv.config();
 connectDatabase();
 app.use(cors());
+
+
 app.use(
   express.json({
     limit: "50mb",
